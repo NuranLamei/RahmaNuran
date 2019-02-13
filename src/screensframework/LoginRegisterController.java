@@ -11,9 +11,14 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
 
 /**
@@ -49,7 +54,7 @@ public class LoginRegisterController implements Initializable,ControlledScreen {
     }
     
     @FXML
-    public void gotoNextScreen(ActionEvent event) throws IOException
+    public void gotoMainScreenScreen(ActionEvent event) throws IOException
   { 
         String userEmail = loginEmailTxt.getText();
           System.out.println(userEmail);
@@ -65,13 +70,13 @@ public class LoginRegisterController implements Initializable,ControlledScreen {
         {
             myClient.login(userEmail, userPassword);
             System.out.println("connected to server from loginregister");
-           /* System.out.println("going to screen2"); 
+            System.out.println("going to screen2"); 
             Parent nextView =FXMLLoader.load(getClass().getResource("MainScreen.fxml"));
             Scene nextScene =new Scene (nextView);
 
             Stage window =(Stage)((Node)event.getSource()).getScene().getWindow();
             window.setScene(nextScene);
-            window.show(); */
+            window.show(); 
 
         }
   }

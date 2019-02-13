@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package clientSide;
-
+import java.util.HashMap;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -45,7 +45,7 @@ public class Client {
     
     public static void main(String[] args) throws IOException {
         // TODO code application logic here
-        Client newClient =new Client ("localhost",4444);
+        Client newClient =new Client ("192.168.1.143",4444);
         newClient.addUserStatusListener(new UserStatusListener(){
 
             @Override
@@ -70,6 +70,11 @@ public class Client {
 
            System.out.print("You got message from"+fromLoginEmail +"==>"+msgBody); 
             }
+        
+        
+        
+        
+        
         });
         
         
@@ -77,12 +82,16 @@ public class Client {
        {  System.err.println("Connect failed ");
        }else {
        System.out.println("Connect successful");
-       // newClient.login("guest", "guest");
-        newClient.msg("jim", "Hello World");
+       //String serverResponse=
+               //newClient.login("test@gmail", "123456");
+               //newClient.register("Ali","ali@gmail","123456");
+               newClient.login("ali@gmail", "123456");
+       
+        //newClient.msg("jim", "Hello World");
         
        }
         
-    }//main
+    }
 
     public boolean connectToServer() {
         try {
@@ -101,20 +110,52 @@ public class Client {
         
     }
 
-    public  void login(String userEmail, String userPassword) throws IOException {
+    public  int login( String userEmail, String userPassword) throws IOException {
         
         String cmd = "LOGIN "+userEmail +" "+userPassword +"\n";
         serverOut.write(cmd.getBytes());
         String serverResponse =bufferedIn.readLine();
         System.out.println("Server Responce :"+serverResponse);
         
-//       if(serverResponse."ok login".equalsIgnoreCase(serverResponse))
-//                     
-//       return true ;
-//       else 
-//           return false ;
+       
+         int isSuccessLogin=0;
+          
         
-        startMessageReader();
+        if(serverResponse=="FAILED LOGIN")
+        {
+        
+          isSuccessLogin=0;
+        }
+           else if(serverResponse=="SUCCESS LOGIN")
+        {
+          
+         isSuccessLogin=1;
+         startMessageReader();
+        }
+        
+        
+          
+
+       return isSuccessLogin ; 
+        
+               
+        
+    }
+    
+    
+    
+    private  void register(String userName, String userEmail, String userPassword) throws IOException {
+        
+        String cmd = "INSERT PLAYER "+userName +" "+userEmail +" "+userPassword +"\n";
+        serverOut.write(cmd.getBytes());
+        String serverResponse =bufferedIn.readLine();
+        System.out.println("Server Responce :"+serverResponse);
+        
+//       handling server responce
+
+
+        
+       
                
         
     }

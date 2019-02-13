@@ -22,8 +22,8 @@ public class ScreensFramework extends Application{
     public static String screen1File = "LoginRegister.fxml";
     public static String screen2ID = "MainScreen";
     public static String screen2File = "MainScreen.fxml";
-    public static String screen3ID = "gameboard";
-    public static String screen3File = "gameboard.fxml";
+   // public static String screen3ID = "gameboard";
+   // public static String screen3File = "gameboard.fxml";
       
     @Override
     public void start(Stage primaryStage) {
@@ -32,7 +32,7 @@ public class ScreensFramework extends Application{
         mainContainer.loadScreen(ScreensFramework.screen0ID, ScreensFramework.screen0File);
         mainContainer.loadScreen(ScreensFramework.screen1ID, ScreensFramework.screen1File);
         mainContainer.loadScreen(ScreensFramework.screen2ID, ScreensFramework.screen2File);
-        mainContainer.loadScreen(ScreensFramework.screen3ID, ScreensFramework.screen3File);
+       // mainContainer.loadScreen(ScreensFramework.screen3ID, ScreensFramework.screen3File);
         
         mainContainer.setScreen(ScreensFramework.screen0ID);
         

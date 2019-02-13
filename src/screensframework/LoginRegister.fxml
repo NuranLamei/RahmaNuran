@@ -53,7 +53,7 @@
                               <TextField layoutX="53.0" layoutY="74.0" />
                               <TextField layoutX="53.0" layoutY="125.0" />
                               <TextField layoutX="53.0" layoutY="177.0" />
-                              <Button layoutX="103.0" layoutY="216.0" mnemonicParsing="false" onAction="#gotoNextScreen" text="signup" />
+                              <Button layoutX="103.0" layoutY="216.0" mnemonicParsing="false" onAction="#gotoMainScreenScreen" text="signup" />
                               <Label layoutX="53.0" layoutY="161.0" text="confirm password" />
                               
                            </children>
