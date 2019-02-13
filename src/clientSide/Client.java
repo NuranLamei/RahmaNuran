@@ -12,6 +12,8 @@ import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.Socket;
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -28,7 +30,7 @@ public class Client {
     private BufferedReader  bufferedIn;
     private ArrayList <UserStatusListener> userStatusListeners=new ArrayList(); 
     private ArrayList <MessageListener> messageListeners=new ArrayList(); 
-
+    private LinkedHashMap<String, String> playerData = new LinkedHashMap<String, String>();
 
 
     /**
@@ -43,7 +45,7 @@ public class Client {
     
     }
     
-    /* public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException {
         // TODO code application logic here
         Client newClient =new Client ("192.168.1.143",4444);
         newClient.addUserStatusListener(new UserStatusListener(){
@@ -83,15 +85,16 @@ public class Client {
        }else {
        System.out.println("Connect successful");
        //String serverResponse=
-               //newClient.login("test@gmail", "123456");
-               //newClient.register("Ali","ali@gmail","123456");
-               newClient.login("ali@gmail", "123456");
+               newClient.login("test@gmail", "123456");
+               //newClient.register("Karam","karam@gmail","123456");
+               //newClient.login("ali@gmail", "123456");
+                
        
         //newClient.msg("jim", "Hello World");
         
        }
         
-    } */
+    }
 
     public boolean connectToServer() {
         try {
@@ -121,15 +124,31 @@ public class Client {
          int isSuccessLogin=0;
           
         
-        if(serverResponse=="FAILED LOGIN")
+        if(serverResponse=="FAILED LOGIN"||serverResponse=="WEIRD TOKENS")
         {
         
           isSuccessLogin=0;
         }
-           else if(serverResponse=="SUCCESS LOGIN")
+           else 
         {
           
          isSuccessLogin=1;
+         //storing returned data in playerDate hashmap
+         String [] playerKeyValues=serverResponse.split(",");
+         for(String playerKeyValue:playerKeyValues)
+         {
+           String [] keyValuePair=playerKeyValue.split(":");
+           playerData.put(keyValuePair[0], keyValuePair[1]);
+           //System.out.println(playerData.get(keyValuePair[0]));
+           
+         }
+            for (Map.Entry<String, String> entrySet : playerData.entrySet()) {
+                Object key = entrySet.getKey();
+                Object value = entrySet.getValue();
+                System.out.println(key+" "+value);
+            }
+         
+         
          startMessageReader();
         }
         
@@ -142,6 +161,8 @@ public class Client {
         
     }
     
+    
+    
     public  void register(String userName, String userEmail, String userPassword) throws IOException {
         
         String cmd = "INSERT PLAYER "+userName +" "+userEmail +" "+userPassword +"\n";
@@ -149,7 +170,12 @@ public class Client {
         String serverResponse =bufferedIn.readLine();
         System.out.println("Server Responce :"+serverResponse);
         
-//       handling server responce           
+//       handling server responce
+
+
+        
+       
+               
         
     }
     
@@ -175,7 +201,6 @@ public class Client {
     private void startMessageReader() {
         Thread messagesThread =new Thread()
         {
-            @Override
             public void run()
             {
              readMessageLoop();
