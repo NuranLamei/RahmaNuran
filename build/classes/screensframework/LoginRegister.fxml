@@ -9,6 +9,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" prefHeight="400.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="screensframework.LoginRegisterController">
     <children>
@@ -25,14 +26,29 @@
                      <children>
                         <Pane layoutX="25.0" layoutY="45.0" prefHeight="277.0" prefWidth="277.0">
                            <children>
-                              <Label layoutX="53.0" layoutY="58.0" text="email" />
-                              <Label layoutX="53.0" layoutY="109.0" text="password" />
-                              <TextField fx:id="loginEmailTxt" layoutX="53.0" layoutY="74.0" />
-                              <TextField fx:id="loginPasswdTxt" layoutX="53.0" layoutY="125.0" />
-                              <Button layoutX="100.0" layoutY="216.0" mnemonicParsing="false" onAction="#gotoMainScreenScreen" text="login" />
+                              <Label layoutX="53.0" layoutY="44.0" text="email" textFill="#ffc805">
+                                 <font>
+                                    <Font name="System Bold" size="24.0" />
+                                 </font></Label>
+                              <Label layoutX="53.0" layoutY="100.0" text="password" textFill="#ffc805">
+                                 <font>
+                                    <Font name="System Bold" size="24.0" />
+                                 </font></Label>
+                              <TextField fx:id="loginEmailTxt" layoutX="53.0" layoutY="74.0">
+                                 <font>
+                                    <Font name="System Bold" size="14.0" />
+                                 </font></TextField>
+                              <TextField fx:id="loginPasswdTxt" layoutX="53.0" layoutY="130.0">
+                                 <font>
+                                    <Font name="System Bold" size="14.0" />
+                                 </font></TextField>
+                              <Button layoutX="84.0" layoutY="188.0" mnemonicParsing="false" onAction="#gotoMainScreenScreen" text="LOGIN">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font></Button>
                            </children>
                         </Pane>
-                        <ImageView fitHeight="234.0" fitWidth="402.0" layoutX="318.0" layoutY="66.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="234.0" fitWidth="402.0" layoutX="350.0" layoutY="88.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@img.png" />
                            </image>
@@ -45,18 +61,33 @@
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <Pane layoutX="25.0" layoutY="45.0" prefHeight="277.0" prefWidth="277.0">
+                        <Pane layoutX="25.0" layoutY="45.0" prefHeight="298.0" prefWidth="277.0">
                            <children>
-                              <Label layoutX="53.0" layoutY="58.0" text="email" />
-                              <Label layoutX="53.0" layoutY="109.0" text="password" />
-                              <Label layoutX="53.0" layoutY="160.0" text="confirm password" />
-                              <TextField fx:id="signupEmailTxt" layoutX="53.0" layoutY="74.0" />
-                              <TextField fx:id="signupPasswdTxt" layoutX="53.0" layoutY="125.0" />
-                              <TextField fx:id="signupPasswdConfTxt" layoutX="53.0" layoutY="177.0" />
-                              <Button layoutX="103.0" layoutY="216.0" mnemonicParsing="false" onAction="#signupHandler" text="signup" />
-                              <Label layoutX="53.0" layoutY="161.0" text="confirm password" />
-                              <TextField fx:id="signupUsernameTxt" layoutX="53.0" layoutY="32.0" />
-                              <Label layoutX="53.0" layoutY="6.0" text="username" />
+                              <Label layoutX="53.0" layoutY="58.0" text="email" textFill="#ffc805">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font></Label>
+                              <Label layoutX="53.0" layoutY="114.0" text="password" textFill="#ffc805">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font></Label>
+                              <TextField fx:id="signupEmailTxt" layoutX="53.0" layoutY="88.0" />
+                              <TextField fx:id="signupPasswdTxt" layoutX="53.0" layoutY="144.0" />
+                              <TextField fx:id="signupPasswdConfTxt" layoutX="53.0" layoutY="196.0" />
+                              <Button layoutX="82.0" layoutY="238.0" mnemonicParsing="false" onAction="#signupHandler" text="signup">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font></Button>
+                              <Label layoutX="53.0" layoutY="165.0" text="confirm password" textFill="#ffc805">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font></Label>
+                              <TextField fx:id="signupUsernameTxt" layoutX="53.0" layoutY="36.0" />
+                              <Label layoutX="53.0" layoutY="6.0" text="username" textFill="#ffc805">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </Label>
                               
                            </children>
                         </Pane>
