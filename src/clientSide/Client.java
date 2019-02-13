@@ -43,7 +43,7 @@ public class Client {
     
     }
     
-    public static void main(String[] args) throws IOException {
+    /* public static void main(String[] args) throws IOException {
         // TODO code application logic here
         Client newClient =new Client ("192.168.1.143",4444);
         newClient.addUserStatusListener(new UserStatusListener(){
@@ -91,7 +91,7 @@ public class Client {
         
        }
         
-    }
+    } */
 
     public boolean connectToServer() {
         try {
@@ -142,21 +142,14 @@ public class Client {
         
     }
     
-    
-    
-    private  void register(String userName, String userEmail, String userPassword) throws IOException {
+    public  void register(String userName, String userEmail, String userPassword) throws IOException {
         
         String cmd = "INSERT PLAYER "+userName +" "+userEmail +" "+userPassword +"\n";
         serverOut.write(cmd.getBytes());
         String serverResponse =bufferedIn.readLine();
         System.out.println("Server Responce :"+serverResponse);
         
-//       handling server responce
-
-
-        
-       
-               
+//       handling server responce           
         
     }
     
@@ -182,6 +175,7 @@ public class Client {
     private void startMessageReader() {
         Thread messagesThread =new Thread()
         {
+            @Override
             public void run()
             {
              readMessageLoop();

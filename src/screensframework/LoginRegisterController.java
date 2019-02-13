@@ -36,12 +36,22 @@ public class LoginRegisterController implements Initializable,ControlledScreen {
      * @param rb
      */
 
-  @FXML
-  Button loginBtn;
+ 
   @FXML
   TextField loginEmailTxt;
   @FXML
   TextField loginPasswdTxt;
+  
+  @FXML
+  TextField signupEmailTxt;
+  @FXML
+  TextField signupPasswdTxt;
+  @FXML
+  TextField signupPasswdConfTxt;
+  @FXML
+  TextField signupUsernameTxt;
+  
+    Client myClient; 
   
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -61,7 +71,7 @@ public class LoginRegisterController implements Initializable,ControlledScreen {
         String userPassword = loginPasswdTxt.getText();
          System.out.println(userPassword);
 
-        Client myClient = new Client("192.168.1.143",4444);
+        myClient = new Client("192.168.1.143",4444);
         if(!myClient.connectToServer())
         {
             System.out.println("can't connect to server");
@@ -69,8 +79,8 @@ public class LoginRegisterController implements Initializable,ControlledScreen {
         else
         {
             myClient.login(userEmail, userPassword);
-            System.out.println("connected to server from loginregister");
-            System.out.println("going to screen2"); 
+            System.out.println("connected to server from login tab");
+            System.out.println("going to MainScreen"); 
             Parent nextView =FXMLLoader.load(getClass().getResource("MainScreen.fxml"));
             Scene nextScene =new Scene (nextView);
 
@@ -81,6 +91,48 @@ public class LoginRegisterController implements Initializable,ControlledScreen {
         }
   }
   
+    public void signupHandler(ActionEvent event) throws IOException{
+        
+        String userUserName = signupUsernameTxt.getText();
+          System.out.println(userUserName);
+        String userEmail = signupEmailTxt.getText();
+          System.out.println(userEmail);
+        String userPassword = signupPasswdTxt.getText();
+         System.out.println(userPassword);
+        String userConfPassword = signupPasswdConfTxt.getText();
+         System.out.println(userConfPassword);
+         
+         if(userPassword.equals(userConfPassword))
+         {
+         
+             System.out.println("password matches");
+             myClient = new Client("192.168.1.143",4444);
+                          
+             if(!myClient.connectToServer())
+            {
+                System.out.println("can't connect to server");
+            }
+            else
+            {
+                myClient.register(userUserName, userEmail, userPassword);
+                System.out.println("connected to server from register tab");
+                System.out.println("going to LoginRegister"); 
+                Parent nextView =FXMLLoader.load(getClass().getResource("LoginRegister.fxml"));
+                Scene nextScene =new Scene (nextView);
+                Stage window =(Stage)((Node)event.getSource()).getScene().getWindow();
+                window.setScene(nextScene);
+                window.show(); 
+
+            }
+         }
+         else
+         {
+         
+              System.out.println("password don't match please retype your password");
+         
+         }
+        
+    }
     
     @Override
     public void setScreenParent(ScreensController screenParent)

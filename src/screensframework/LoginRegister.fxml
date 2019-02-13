@@ -17,7 +17,7 @@
             <Image url="@backgroud.jpg" />
          </image>
       </ImageView>
-      <TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="700.0"  tabClosingPolicy="UNAVAILABLE">
+      <TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="700.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
           <Tab text="Login">
                <content>
@@ -50,11 +50,13 @@
                               <Label layoutX="53.0" layoutY="58.0" text="email" />
                               <Label layoutX="53.0" layoutY="109.0" text="password" />
                               <Label layoutX="53.0" layoutY="160.0" text="confirm password" />
-                              <TextField layoutX="53.0" layoutY="74.0" />
-                              <TextField layoutX="53.0" layoutY="125.0" />
-                              <TextField layoutX="53.0" layoutY="177.0" />
-                              <Button layoutX="103.0" layoutY="216.0" mnemonicParsing="false" onAction="#gotoMainScreenScreen" text="signup" />
+                              <TextField fx:id="signupEmailTxt" layoutX="53.0" layoutY="74.0" />
+                              <TextField fx:id="signupPasswdTxt" layoutX="53.0" layoutY="125.0" />
+                              <TextField fx:id="signupPasswdConfTxt" layoutX="53.0" layoutY="177.0" />
+                              <Button layoutX="103.0" layoutY="216.0" mnemonicParsing="false" onAction="#signupHandler" text="signup" />
                               <Label layoutX="53.0" layoutY="161.0" text="confirm password" />
+                              <TextField fx:id="signupUsernameTxt" layoutX="53.0" layoutY="32.0" />
+                              <Label layoutX="53.0" layoutY="6.0" text="username" />
                               
                            </children>
                         </Pane>
