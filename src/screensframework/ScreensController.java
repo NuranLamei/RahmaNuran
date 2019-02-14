@@ -78,12 +78,13 @@ public class ScreensController extends StackPane{
     
     public boolean setScreen(final String name)
     {
+        System.out.println("screensframework.ScreensController.setScreen()");
     if(myScreens.get(name)!=null)
     {
-       
+        System.out.println("screens are loaded! msg from set screen");
         final DoubleProperty opacity = opacityProperty();
         if(!getChildren().isEmpty()){
-            System.out.println("first screen");
+            System.out.println("first screen msg from set screen");
             Timeline fade = new Timeline (
             new KeyFrame (Duration.ZERO, new KeyValue(opacity,1.0)),
             new KeyFrame(new Duration(1000), new EventHandler<ActionEvent>(){
@@ -104,7 +105,7 @@ public class ScreensController extends StackPane{
         }
         
         else{
-            System.out.println("not first screen");
+            System.out.println("not first screen. msg from set screen");
             setOpacity(0.0);
             getChildren().add(myScreens.get(name));
             Timeline fadeIn = new Timeline(
@@ -116,7 +117,7 @@ public class ScreensController extends StackPane{
         return true;
     }
     else{
-        System.out.println("screen hasn't benn loaded");
+        System.out.println("screen hasn't benn loaded. msg from set screen");
         return false;
     
     }

@@ -9,6 +9,8 @@ import clientSide.Client;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -80,8 +82,12 @@ public class LoginRegisterController implements Initializable,ControlledScreen {
         {
             myClient.login(userEmail, userPassword);
             System.out.println("connected to server from login tab");
-            System.out.println("going to MainScreen"); 
-            Parent nextView =FXMLLoader.load(getClass().getResource("MainScreen.fxml"));
+
+            
+          //  myController.setScreen(ScreensFramework.screen3ID);
+          
+            
+            Parent nextView =FXMLLoader.load(getClass().getResource("PlayMode.fxml"));
             Scene nextScene =new Scene (nextView);
 
             Stage window =(Stage)((Node)event.getSource()).getScene().getWindow();
@@ -89,7 +95,10 @@ public class LoginRegisterController implements Initializable,ControlledScreen {
             window.show(); 
 
         }
-  }
+  
+}
+        
+  
   
     public void signupHandler(ActionEvent event) throws IOException{
         
